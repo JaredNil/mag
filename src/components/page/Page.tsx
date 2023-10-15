@@ -14,6 +14,7 @@ const Page: React.FC<PageInterface> = ({ children }) => {
 				page
 				w-full
 				h-[7000px]
+				relative
 			"
 		>
 			{children}

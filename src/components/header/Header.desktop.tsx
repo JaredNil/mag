@@ -15,7 +15,8 @@ const HeaderDesktop: React.FC<HeaderPropsInterface> = ({ barLink }) => {
 		<div
 			className="
 					header
-					h-[100px] relative bg-white z-50
+					fixed top-0 left-0
+					h-[100px] w-full bg-white z-50
 					flex justify-end items-center
 				"
 		>
