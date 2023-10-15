@@ -1,20 +1,28 @@
+import { useContext } from 'react'
 import { Link } from "react-router-dom"
 
 import uuid from 'react-uuid';
 
-import logo from '../../resources/logo.png'
+import logoflat from '../../resources/logo-bold.png'
+import logovertical from '../../resources/logo-vertical.png'
+
 import { BiSearchAlt } from 'react-icons/bi'
 import { FaExternalLinkAlt } from 'react-icons/fa'
 
 import { HeaderPropsInterface } from "./Header.service";
+import { ApplicationContext } from "src/store/context";
 
 
 
 const HeaderDesktop: React.FC<HeaderPropsInterface> = ({ barLink }) => {
+
+	const AppState = useContext(ApplicationContext)
+	const width = AppState?.widthViewport || 1200
+
 	return (
 		<div
 			className="
-					header
+					header-desktop
 					fixed top-0 left-0
 					h-[100px] w-full bg-white z-50
 					flex justify-end items-center
@@ -26,18 +34,29 @@ const HeaderDesktop: React.FC<HeaderPropsInterface> = ({ barLink }) => {
 				absolute bottom-[30px] left-[60px]
 				"
 			>
-				<img
-					src={logo}
-					alt="МАГИСТРАЛЬ_ЛОГИСТИК"
-					className="
-		
-							select-none pointer-events-none
-							md:h-[32px]
-							lg:h-[25px]
-							xl:h-[30px] 
-		"
-				/>
-				{/* МАГИСТРАЛЬ<span>_</span>ЛОГИСТИК */}
+				{
+					(width < 1500) ?
+						<img
+							src={logovertical}
+							alt="МАГИСТРАЛЬ_ЛОГИСТИК"
+							className="
+								relative bottom-[5px]
+								w-auto aspect-[605/75]
+								h-[32px] xl:h-[45px] xl:bottom-[-5px]
+								select-none pointer-events-none
+							"
+						/>
+						: <img
+							src={logoflat}
+							alt="МАГИСТРАЛЬ_ЛОГИСТИК"
+							className="
+								relative 
+								w-auto aspect-[37.8/1]
+								h-[20px] bottom-[-7px]
+								select-none pointer-events-none
+							"
+						/>
+				}
 			</div>
 			<div className="
 					header__linkbar

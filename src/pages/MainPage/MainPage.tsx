@@ -1,4 +1,6 @@
+import { useContext, ReactNode } from 'react'
 
+import { ApplicationContext } from 'src/store/context'
 
 import Page from "../../components/page/Page"
 
@@ -6,15 +8,25 @@ import { IoIosPeople } from 'react-icons/io'
 
 import './mainPage.scss'
 
-const MainPage = () => {
+
+interface MainPageProps {
+	children?: ReactNode,
+}
+
+const MainPage: React.FC<MainPageProps> = ({ }) => {
+
+	const AppState = useContext(ApplicationContext)
+	const isMobile = AppState?.isMobile
+
 	return (
-		<Page>
-			<main className="
+		<Page >
+			<main className={`
 				main
 				w-full h-auto relative
-				lg:mt-[100px] mt-[50px]
-			"
-			>
+			
+				${(isMobile) ? `mt-[50px]` : `mt-[100px]`}
+			`
+			}>
 				<section className="introduce">
 
 					<div className="introduce__content">
@@ -88,7 +100,13 @@ const MainPage = () => {
 
 						</div>
 					</div>
-					<div className="introduce__pag">
+					<div className={
+						`
+						introduce__pag
+
+						${(isMobile) ? `basis-[50px]` : `basis-[80px]`}
+						`
+					}>
 
 					</div>
 				</section>
@@ -97,7 +115,7 @@ const MainPage = () => {
 
 
 			</main>
-		</Page>
+		</Page >
 	)
 }
 

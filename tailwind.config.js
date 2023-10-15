@@ -16,6 +16,9 @@ module.exports = {
 				sup_3: '#a65c00',
 				sup_4: '#ffaa40',
 				sup_5: '#ffc173',
+			},
+			aspectRatio: {
+				'logo': '37.8/1'
 			}
 		},
 	},

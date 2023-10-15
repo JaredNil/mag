@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 
 
 interface PageInterface {
-	children: ReactNode
+	children: ReactNode,
 }
 
 
