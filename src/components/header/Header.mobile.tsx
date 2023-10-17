@@ -6,8 +6,6 @@ import { ApplicationContext } from 'src/store/context';
 
 import uuid from 'react-uuid';
 
-import useScrollLock from 'src/hooks/useScrollLock';
-
 import logoflat from '../../resources/logo-bold.png'
 import logovertical from '../../resources/logo-vertical.png'
 
@@ -16,15 +14,16 @@ import { FaExternalLinkAlt } from 'react-icons/fa'
 
 import { HeaderPropsInterface } from "./Header.service";
 
+import './Header.styles.scss'
+
 
 const HeaderMobile: React.FC<HeaderPropsInterface> = ({ barLink }) => {
 
-	const [isOpenBurger, setOpenBurger] = useState(true)
+	const [isOpenBurger, setOpenBurger] = useState(false)
 	let _
 	useEffect(() => {
 		const st = document.body.style
 		const header = (document.getElementsByClassName('header-mobile') as HTMLCollectionOf<HTMLElement>)[0].style
-		console.log(header)
 		if (isOpenBurger) {
 			st.overflowY = 'hidden'
 			st.paddingRight = '17px'
@@ -52,6 +51,7 @@ const HeaderMobile: React.FC<HeaderPropsInterface> = ({ barLink }) => {
 					header__burger
 					flex-[0_0_50px]
 					w-[50px]
+					z-50
 					relative  h-full 
 					flex justify-center items-center
 				"
@@ -86,7 +86,7 @@ const HeaderMobile: React.FC<HeaderPropsInterface> = ({ barLink }) => {
 										relative
 										w-auto aspect-[605/75]
 										${(width < 350) ? 'h-[18px]' : 'h-[24px]'}
-										select-none pointer-events-none
+										select-none cursor-pointer
 
 									`}
 								/>
@@ -97,8 +97,7 @@ const HeaderMobile: React.FC<HeaderPropsInterface> = ({ barLink }) => {
 									relative 
 									w-auto aspect-[37.8/1]
 									${(width < 660) ? 'h-[10px]' : 'h-[12px]'}
-									
-									select-none pointer-events-none
+									select-none cursor-pointer
 									`}
 								/>
 						}
@@ -119,66 +118,79 @@ const HeaderMobile: React.FC<HeaderPropsInterface> = ({ barLink }) => {
 				</div>
 
 
-				{isOpenBurger &&
-					<div className='
-									burger
-									fixed w-full h-[100vh]
-									z-50
-									select-none pointer-events-none
-								'
+					<div className={`
+						burger w-full h-[100vh]
+						fixed top-0 left-0 z-30
+						select-none pointer-events-none
+						${(isOpenBurger)? 'scale-y-1 ' :'scale-y-0'}
+						transition-all 
+					`}
 					>
 						<div className="
 										burger__container mt-[50px]
 										bg-white
 										h-full w-full
+										pointer-events-auto
+										flex flex-col justify-start items-center
 										"
 						>
-							<div className="burger__top">
+							<ul className="burger__top
+							w-full px-[50px]
+
+							flex flex-col items-left pt-[40px]			
+							">
 								{
 									barLink.topBarLink.map(l => {
 										return (
-											<Link
-												to={l.link}
-												key={uuid()}
-												className="
-															mr-2
-															text-xs text-slate-700	
-															hover:underline hover:text-main
-															flex
-														"
-											>
-												{l.info}
-												{(l.redirect
-													? (< FaExternalLinkAlt size={'14px'} className="px-[2px]" />)
-													: ''
-												)}
-											</Link>
+											<li key={uuid()} className='w-auto my-[4px]'>
+												<Link
+													to={l.link}
+													
+													className="
+																text-sm sm:text-xl
+																text-slate-700 font-bold
+																min-h-[28px] sm:min-h-[34px]
+																hover:underline hover:text-main
+																inline-flex justify-start items-center
+															"
+												>
+													{l.info}
+												</Link>
+											</li>
 										)
 									})
 								}
-							</div>
-							<div className="burger__under">
+							</ul>
+							<ul className="burger__under
+									w-full pl-[50px] 
+									flex flex-col items-left pt-[40px]	
+								"
+							>
 								{
 									barLink.underBarLink.map(l => {
 										return (
+										<li key={uuid()}>
 											<Link
 												to={l.link}
-												key={uuid()}
+												
 												className="
-														mr-2
-														text-sm text-slate-700	tracking-wide
-														hover:underline hover:text-main
+												text-sm sm:text-xl
+												text-slate-700
+												min-h-[28px] sm:min-h-[34px]
+												hover:underline hover:text-main
+												inline-flex justify-start items-center
 													"
 											>
 												{l.info}
 											</Link>
+										</li>
 										)
 									})
 								}
-							</div>
+							</ul>
 						</div>
 					</div>
-				}
+				
 
 			</div>
 

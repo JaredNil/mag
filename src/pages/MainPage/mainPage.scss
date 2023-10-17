@@ -1,7 +1,7 @@
 @use "../../components/utils/_var.scss" as var;
 
 .introduce {
-	min-width: 100%;
+	width: 100%;
 	display: flex;
 	min-height: 80vh;
 }
@@ -10,6 +10,11 @@
 	position: relative;
 	background-color: var.$main;
 	overflow: hidden;
+
+	display: flex;
+	flex-direction: column;
+
+	justify-content: end;
 
 	.introduce__image {
 		position: absolute;
@@ -22,27 +27,45 @@
 		pointer-events: none;
 		user-select: none;
 
-		background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0) 0%, black 100%),
-			linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, black 82.4219%),
-			linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 82.4219%),
-			linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 82.4219%),
-			linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 82.4219%);
+
+		
 		img {
 			height: 100%;
 			width: 100%;
 			position: relative;
 			object-fit: cover;
+			z-index: 10;
+
+		
+		}
+		&::after{
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 11;
+			height: 100%;
+			width: 100%;
+			background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0) 0%, black 100%),
+			linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, black 82.4219%),
+			linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 82.4219%),
+			linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 82.4219%),
+			linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 82.4219%);
+	
 		}
 	}
 }
 .introduce__pag {
-	// flex: 0 0 50px;
+	flex: 0 0 50px;
 }
 
 .introduce__box {
 	position: relative;
-	z-index: 20;
+	z-index: 11;
 	color: #fff;
+	display: flex; 
+	flex-direction: column;
+
 	.introduce__explore {
 		.introduce__explore-title {
 		}
