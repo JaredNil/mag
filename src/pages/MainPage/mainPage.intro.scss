@@ -1,10 +1,20 @@
 @use "../../components/utils/_var.scss" as var;
 
+.main{
+	max-width: 1920px;
+	margin: 0 auto;
+}
+
+
 .introduce {
 	width: 100%;
+	
 	display: flex;
-	min-height: 80vh;
+
 }
+
+@media (max-width:1023px) {
+	
 .introduce__content {
 	flex: 1 1 auto;
 	position: relative;
@@ -24,6 +34,12 @@
 			top: 0;
 			left: 0;
 			height: 100%;
+			@media (min-width:630px) {
+				height: 40%;
+			}
+			@media (min-width:910px) {
+				height: 50%;
+			}
 		}
 
 		width: 100vw;
@@ -66,8 +82,6 @@
 				z-index: 11;
 				height: 100%;
 				width: 100%;
-				// background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0) 0%, black 100%),linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, black 82.4219%),linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 82.4219%),linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 82.4219%),linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 82.4219%);
-		
 			}
 		}
 	}
@@ -94,7 +108,10 @@
 	flex-direction: column;
 	@media (min-width:630px) {
 		background-color: black;
-		top: 20vh;
+		margin-top: 20vh;
+	}
+	@media (min-width:910px) {
+		margin-top: 27vh;
 	}
 
 	&::after{
@@ -240,3 +257,193 @@
 		}
 	}
 }
+
+	
+}
+
+
+// DESKTOP RESPONSIVE PAGE SECTION
+
+
+
+
+
+
+
+
+// DESKTOP RESPONSIVE PAGE SECTION
+@media (min-width:1023px) {
+	
+	.introduce__content {
+		flex: 1 1 auto;
+		position: relative;
+		overflow: hidden;
+	
+	
+		.introduce__image {
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			@media (min-width:1250px) {
+				// height: 85%;
+			}
+			img {
+				
+				height: 100%;
+				width: 100%;
+				position: relative;
+				object-fit: fill;
+				z-index: 10;
+				}
+			&::after{
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 11;
+				height: 100%;
+				width: 100%;
+	
+				background-image: linear-gradient(-153.4349488229deg, var.$main 0%, rgba(234, 44, 0, 0) 50%);
+			}
+			
+				&::before{
+					content: '';
+					position: absolute;
+					top: 0;
+					left: 0;
+					z-index: 11;
+					height: 100%;
+					width: 100%;
+					
+					background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0) 0%, black 100%),
+					linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, black 82.4219%),
+					linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 82.4219%),
+					linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 82.4219%),
+					linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 82.4219%);
+				}
+		}
+	}
+		.introduce__pag {
+			flex: 0 0 80px;
+		}
+
+	
+	.introduce__box {
+		position: relative;
+		z-index: 11;
+		padding: 207px 66px 17px 66px;
+		color: #fff;
+		display: flex; 
+		flex-direction: column;
+	
+	
+		.introduce__explore {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-start;
+
+			.introduce__explore-title {
+				font-weight: 300;
+				font-size: 72px;
+				line-height: 80px;
+				position: relative;
+					&::after{
+					content: '';
+					position: absolute;
+					top: -23px;
+					left: -23px;
+					
+					z-index: 12;
+					width: calc(100% +  34px);
+					height: 12vh;
+					border-top: solid 5px var.$main;
+					border-left: solid 5px var.$main;
+				}
+			}
+			.introduce__explore-text {
+				position: relative;
+				max-width: 90%;
+				padding: 32px 0 32px 0;
+				font-size: 18px;
+				letter-spacing: .2px;
+				line-height: 32px;
+				@media (min-width:630px) {
+					font-size: 22px;
+					line-height: 32px;
+				}
+			}
+			.introduce__explore-button {
+				position: relative;
+				left: 0%;
+				width: 20%;
+				padding: 12px 31px;
+				
+				background-color: #fff;
+				color:var.$main;
+				text-align: center;
+				font-weight: 700;
+				font-size: 15px;
+				letter-spacing: 2px;
+	
+				cursor: pointer;
+				transition: all 0.3s ease 0s;
+				
+				&:hover{
+					background-color: var.$main;
+					color:#fff;
+				}
+			}
+		}
+		.introduce__table {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: flex-start;
+			padding: 25px 0 30px  0 ;
+
+			.item-col {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				@media (min-width:1250px) {
+					flex-direction: row;
+					justify-content: flex-start;
+
+				}
+				.item{
+					@media (min-width:1250px) {
+						flex-basis: 50%;
+					}
+					display: flex;
+					flex-direction: row;
+					justify-content: flex-start;
+					align-items: flex-start;
+					padding: 20px 25px 20px 14px;
+					.icon {
+						transform: scale(1.54);
+						padding: 9px 30px 0 17px;
+
+					}
+					.info{
+						.info-title{
+							font-weight: 200;
+							font-size: 34px;
+   							line-height: 40px;
+							padding-bottom: 13px;
+						}
+						.info-descr{
+							font-size: 18px;
+							letter-spacing: .2px;
+							line-height: 32px;
+							font-weight: 500;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+		
+	}

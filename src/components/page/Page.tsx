@@ -13,7 +13,6 @@ const Page: React.FC<PageInterface> = ({ children }) => {
 		<div className="
 				page
 				w-full
-				h-[7000px]
 				relative
 			"
 		>
