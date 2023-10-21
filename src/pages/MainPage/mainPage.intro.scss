@@ -154,6 +154,9 @@
 				height: 10vh;
 				border-top: solid 5px var.$main;
 				border-left: solid 5px var.$main;
+
+				animation: title-border-anima 2s ease;
+
 			}
 		}
 		.introduce__explore-text {
@@ -226,13 +229,32 @@
 					align-items: center;
 				}
 				.icon {
-					padding: 0 0 5px 0;
+					position: relative;
+					margin: 0 0 8px 5px;
 					@media (min-width:630px) {
-						padding: 5px 22px 5px 14px;
+						margin: 5px 22px 5px 14px;
 					}
 					@media (min-width:1025px) {
 						padding: 20px;
 						transform: scale(1.4);
+					}
+
+					&::after{
+
+						content: '';
+						position: absolute;
+						top: -10%;
+						left: -10%;
+						height: 120%;
+						width: 120%;
+						border-radius: 50%;
+						box-shadow: inset 0 0 0 2px var.$main;
+						@media (min-width:630px) {
+
+						}
+
+
+						animation: cubic-appearance 1s linear;
 					}
 				}
 				.info{
@@ -258,8 +280,18 @@
 	}
 }
 
-	
 }
+
+
+@keyframes cubic-appearance{
+	0% { clip-path: 	polygon(50% 50%, 50% -21%, 50% -21%, 50% -21%, 50% -21%, 50% -21%); }
+	25% { clip-path: 	polygon(50% 50%, 50% -21%, -21% 50%, -21% 50%, -21% 50%, -21% 50%); }
+	50% { clip-path: 	polygon(50% 50%, 50% -21%, -21% 50%, 50% 121%, 50% 121%, 50% 121%); }
+	75% { clip-path: 	polygon(50% 50%, 50% -21%, -21% 50%, 50% 121%, 121% 50%, 121% 50%); }
+    100% { clip-path: 	polygon(50% 50%, 50% -21%, -21% 50%, 50% 121%, 121% 50%, 50% -21%); }
+}
+
+
 
 
 // DESKTOP RESPONSIVE PAGE SECTION
@@ -360,6 +392,8 @@
 					height: 12vh;
 					border-top: solid 5px var.$main;
 					border-left: solid 5px var.$main;
+
+					animation: title-border-anima 2s ease;
 				}
 			}
 			.introduce__explore-text {
@@ -423,8 +457,21 @@
 					padding: 20px 25px 20px 14px;
 					.icon {
 						transform: scale(1.54);
-						padding: 9px 30px 0 17px;
+						margin: 12px 32px 0 17px;
+						&::after{
 
+							content: '';
+							position: absolute;
+							top: -10%;
+							left: -10%;
+							height: 120%;
+							width: 120%;
+							border-radius: 50%;
+							box-shadow: inset 0 0 0 1.2px var.$main;
+	
+	
+							animation: cubic-appearance 1s linear;
+						}
 					}
 					.info{
 						.info-title{
@@ -447,3 +494,17 @@
 	
 		
 	}
+
+
+	@keyframes title-border-anima {   
+		from {
+			width: 1px; 
+			height: 1px;
+		}   
+
+		to {
+			width: calc(100% +  34px);
+			height: 10vh;
+		}
+	}
+

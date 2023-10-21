@@ -1,4 +1,5 @@
 import { useContext, ReactNode } from 'react'
+import uuid from 'react-uuid'
 
 import { ApplicationContext } from 'src/store/context'
 
@@ -9,9 +10,11 @@ import {BiDockRight} from 'react-icons/bi'
 
 import introImg from './../../resources/section_intro.png'
 import introImgDesktopSlim from './../../resources/section_intro-desctop-mini.png'
+import careerImg from '../../resources/career.jpg'
 
 import './mainPage.intro.scss'
 import './mainPage.news.scss'
+
 
 interface MainPageProps {
 	children?: ReactNode,
@@ -69,7 +72,7 @@ const MainPage: React.FC<MainPageProps> = ({ }) => {
 								<div className="item-col">
 									<div className="item">
 										<div className="icon">
-											<IoIosPeople size={40} color='#0099ff' />
+											<IoIosPeople className='icon-ioio' size={40} color='#0099ff' />
 										</div>
 										<div className="info">
 											<div className="info-title">Сотрудничество</div>
@@ -144,7 +147,7 @@ const MainPage: React.FC<MainPageProps> = ({ }) => {
 								<div className="news__feed-list">
 									{
 										news.map(n => (
-											<div className='item'>
+											<div className='item' key={uuid()}>
 												<div className="item-icon">
 													<BiDockRight size={'18px'}/>
 												</div>
@@ -173,7 +176,7 @@ const MainPage: React.FC<MainPageProps> = ({ }) => {
 								</button>
 							</div>
 							<div className="career__image">
-									<img src='#' alt="Тут будет какая-то картинка" />
+									<img src={careerImg} alt="Тут будет какая-то картинка" />
 							</div>
 						</div>
 				</section>

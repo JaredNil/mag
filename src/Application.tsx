@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 
 import useMobile from './hooks/useDevice'
 import useWidthViewport from './hooks/useWidthViewport';
+import useScrollViewport from './hooks/useScrollViewport';
 
 import { ApplicationContext } from './store/context';
 
@@ -22,11 +23,14 @@ const Application: React.FC<ApplicationInterface> = () => {
 
 	const isMobile = useMobile()
 	const widthViewport = useWidthViewport()
+	const scrollViewport = useScrollViewport()
+
+
 
 	return (
-		<ApplicationContext.Provider value={{ isMobile, widthViewport }}>
+		<ApplicationContext.Provider value={{ isMobile, widthViewport, scrollViewport }}>
 
-			<div className="application">
+			<div className="application" >
 				<Header />
 				<Outlet />
 				<Footer />

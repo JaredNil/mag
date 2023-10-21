@@ -22,3 +22,18 @@
 .burger{
     transform-origin:center 50px;
 }
+
+
+.input__search-after{
+    display: block;
+    &::after{
+        content: '';
+        position: absolute;
+        top: 17px;
+        left: 50px;
+        width: calc(100% - 100px);
+        height: 1px;  
+        background-color: #111;
+        z-index: 500;
+    }
+}
