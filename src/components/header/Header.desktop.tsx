@@ -23,34 +23,33 @@ const HeaderDesktop: React.FC<HeaderPropsInterface> = ({ barLink }) => {
 	const [isCut, setIsCut] = useState<boolean>(false)
 
 
-	useEffect(()=>{
-		console.log(inputRef)
+	useEffect(() => {
 		if (window.scrollY === undefined || scroll === null) setIsCut(false)
 		if (window.scrollY >= 60) setIsCut(true)
 		else setIsCut(false)
-	}, [scroll ])
-	
+	}, [scroll])
+
 
 	const [isSearchInput, setIsSearchInput] = useState<boolean>(false)
 
 
-	function clickSearchHandler(){
-		if(!isSearchInput){inputRef.current?.focus()}
+	function clickSearchHandler() {
+		if (!isSearchInput) { inputRef.current?.focus() }
 		setIsSearchInput(!isSearchInput)
-		if(isSearchInput){window.focus()}
+		if (isSearchInput) { window.focus() }
 	}
-	
+
 	const inputRef = useRef<HTMLInputElement | null>(null);
-	
-	
+
+
 	return (
 		<div
-			
+
 			className={`
 					header-desktop
 					fixed top-0 left-[50%] translate-x-[-50%]
 					h-[100px] w-full max-w-[1920px] 
-					 bg-white z-50
+					bg-white z-50
 					flex justify-end items-center
 
 					transition-all origin-top delay-0 ease-linear
@@ -78,7 +77,7 @@ const HeaderDesktop: React.FC<HeaderPropsInterface> = ({ barLink }) => {
 								select-none pointer-events-none
 
 								transition-all origin-top delay-0 ease-linear
-								${(isCut) ? 'bottom-[-17px]' : 'xl:bottom-[-5px]'} 
+								${(isCut) ? 'bottom-[-22px]' : 'xl:bottom-[-5px]'} 
 							`}
 						/>
 						: <img
@@ -94,17 +93,17 @@ const HeaderDesktop: React.FC<HeaderPropsInterface> = ({ barLink }) => {
 				}
 			</div>
 
-			{	!isSearchInput &&
-				
+			{!isSearchInput &&
+
 				<div className="
 					header__linkbar
 					
 					h-full
 					flex flex-col justify-center items-end
 					"
-			>
+				>
 
-				<div className={`
+					<div className={`
 							header__upbar
 							h-[40px]
 							flex justify-end items-center
@@ -113,31 +112,31 @@ const HeaderDesktop: React.FC<HeaderPropsInterface> = ({ barLink }) => {
 							${(isCut) ? 'opacity-0 h-[0px]' : ''} 
 						`
 					}>
-					{
-						barLink.topBarLink.map(l => {
-							return (
-								<Link
-									to={l.link}
-									key={uuid()}
-									className="
+						{
+							barLink.topBarLink.map(l => {
+								return (
+									<Link
+										to={l.link}
+										key={uuid()}
+										className="
 											mr-2
 											text-xs text-slate-700	
 											hover:underline hover:text-main
 											flex
 										"
-								>
-									{l.info}
-									{(l.redirect
-										? (< FaExternalLinkAlt size={'14px'} className="px-[2px]" />)
-										: ''
-									)}
-								</Link>
-							)
-						})
-					}
+									>
+										{l.info}
+										{(l.redirect
+											? (< FaExternalLinkAlt size={'14px'} className="px-[2px]" />)
+											: ''
+										)}
+									</Link>
+								)
+							})
+						}
 
-				</div>
-				<div className={`
+					</div>
+					<div className={`
 						header__downbar
 						h-[60px]
 						flex justify-end items-center
@@ -145,36 +144,36 @@ const HeaderDesktop: React.FC<HeaderPropsInterface> = ({ barLink }) => {
 						transition-all origin-top delay-0 ease-linear
 						${(isCut) ? 'h-[60px]' : ''} 
 					`}
-				>
-					{
-						barLink.underBarLink.map(l => {
-							return (
-								<Link
-									to={l.link}
-									key={uuid()}
-									className="
+					>
+						{
+							barLink.underBarLink.map(l => {
+								return (
+									<Link
+										to={l.link}
+										key={uuid()}
+										className="
 										mr-2
 										text-sm text-slate-700	tracking-wide
 										hover:underline hover:text-main
 									"
-								>
-									{l.info}
-								</Link>
-							)
-						})
-					}
-				</div>
+									>
+										{l.info}
+									</Link>
+								)
+							})
+						}
+					</div>
 
-			</div>
+				</div>
 			}
 			{
-				<div 
+				<div
 					className={`header__search
 						px-[20%] right-[-1px] h-[100%] grow
 						bg-main 
 						
 						flex justify-center items-center
-						${(!isSearchInput) ? 'mt-[-100%] scale-x-0 absolute' :'relative'}
+						${(!isSearchInput) ? 'mt-[-100%] scale-x-0 absolute' : 'relative'}
 					`}
 				>
 					<BiSearchAlt
@@ -185,7 +184,7 @@ const HeaderDesktop: React.FC<HeaderPropsInterface> = ({ barLink }) => {
 						relative
 						
 						${(!isCut)
-							? 
+							?
 							`after:content-[''] after:absolute after:block
 							after:h-[2px] after:w-[20px] after:bg-white
 							after:bottom-[3px] after:left-[-8px] 
@@ -214,12 +213,12 @@ const HeaderDesktop: React.FC<HeaderPropsInterface> = ({ barLink }) => {
 								text-white
 								selection:bg-main_4
 								placeholder:text-white 	placeholder:font-light placeholder:-tracking-tight
-								${(!isCut) ? 'text-[24px] leading-[30px]' :'text-[20px] leading-[24px]'}
+								${(!isCut) ? 'text-[24px] leading-[30px]' : 'text-[20px] leading-[24px]'}
 							`}
 						/>
 						<div className="search__field hidden">
 							<ul>
-								<li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </li>
+								<li><Link to={'/'}>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</Link> </li>
 								<li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
 								<li>Lorem ipsum dolor sit amet consectetur adipisicing elit. </li>
 								<li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </li>
@@ -230,7 +229,7 @@ const HeaderDesktop: React.FC<HeaderPropsInterface> = ({ barLink }) => {
 					</div>
 				</div>
 			}
-			<div 
+			<div
 				onClick={clickSearchHandler}
 				className="
 					header__search
@@ -240,7 +239,7 @@ const HeaderDesktop: React.FC<HeaderPropsInterface> = ({ barLink }) => {
 				"
 			>
 				<div className={`inline-flex transition-all
-					${(isSearchInput) ? 'rotate-45' : 'rotate-0' }
+					${(isSearchInput) ? 'rotate-45' : 'rotate-0'}
 				`}>
 					<BiSearchAlt
 						size={'50px'} color="#fff"
